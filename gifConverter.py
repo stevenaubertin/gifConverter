@@ -16,6 +16,14 @@ def convert(input, output, fmt='rgb24'):
         ])
     try:
         proc.wait()
+        #gifsicle -O2 input.gif -o output.gif
+        proc = subprocess.Popen([
+            'gifsicle',
+            '-O3',
+            '-i', output,
+            '-o', output
+        ])
+        proc.wait()
     except:
         pass
 
@@ -25,12 +33,14 @@ def print_help():
     print "-o output file or directory"
     print "-d directory (can't use -i then)"
     print "-h to to display this help message"
+    print "-r remove original file"
 
 
 def main(argv):
     i = None
     o = None
     d = None
+    r = False
 
     try:
         opts, args = getopt.getopt(
@@ -55,6 +65,8 @@ def main(argv):
             o = arg
         elif opt == '-d':
             d = arg
+        elif opt == '-r':
+            r = True
 
     if d:
         if not os.path.isdir(d):
@@ -64,6 +76,9 @@ def main(argv):
 
     for input in i:
         convert(input, o if o else ''.join([os.path.splitext(input)[0],'.gif']))
+
+    if r:
+        os.remove(i)
 
     return 0
 
