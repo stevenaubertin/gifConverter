@@ -1,0 +1,19 @@
+# Python dependencies
+# This project requires Python 3.6+
+
+# No Python package dependencies - using only standard library
+
+# External system dependencies (must be installed separately):
+# - ffmpeg: https://www.ffmpeg.org/
+# - gifsicle: https://www.lcdf.org/gifsicle/
+#
+# Installation instructions:
+#
+# Ubuntu/Debian:
+#   sudo apt-get install ffmpeg gifsicle
+#
+# macOS (with Homebrew):
+#   brew install ffmpeg gifsicle
+#
+# Windows (with Chocolatey):
+#   choco install ffmpeg gifsicle
